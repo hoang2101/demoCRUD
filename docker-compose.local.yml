@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      context: .
+    container_name: symfony_app
+    ports:
+      - "8000:8000"  # Port của ứng dụng Symfony
+    volumes:
+      - .:/var/www/symfony  # Duy trì mã nguồn trên container
+    environment:
+      - SYMFONY_ENV=dev
+    networks:
+      - symfony_network
