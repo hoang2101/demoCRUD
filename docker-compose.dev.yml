@@ -4,9 +4,11 @@ services:
       context: .
     container_name: symfony_app
     ports:
-      - "80:8000"  # Port của ứng dụng Symfony
+      - "80:8000"
+    restart: always 
     volumes:
-      - .:/var/www/symfony  # Duy trì mã nguồn trên container
+      - .:/app
+      - /app/vendor  # Duy trì mã nguồn trên container
     environment:
       - SYMFONY_ENV=dev
     networks:

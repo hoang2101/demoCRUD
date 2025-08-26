@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"  # Port của ứng dụng Symfony
     volumes:
-      - .:/var/www/symfony  # Duy trì mã nguồn trên container
+      - .:/app
     environment:
       - SYMFONY_ENV=dev
     networks:
