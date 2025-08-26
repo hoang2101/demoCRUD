@@ -15,9 +15,9 @@ RUN apt-get update && apt-get install -y \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Copy toàn bộ mã nguồn vào container
-COPY . /var/www/symfony
+COPY . /app
 
-WORKDIR /var/www/symfony
+WORKDIR /app
 
 # Cài đặt các gói PHP từ Composer
 RUN composer install --no-dev --optimize-autoloader
