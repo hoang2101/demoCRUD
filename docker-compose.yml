@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+    container_name: symfony_app
+    ports:
+      - "8000:8000"  # Port của ứng dụng Symfony
+    volumes:
+      - .:/var/www/symfony  # Duy trì mã nguồn trên container
+    environment:
+      - SYMFONY_ENV=dev
+    networks:
+      - symfony_network
+
+  db:
+    image: mysql:8
+    container_name: symfony_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: symfony
+    networks:
+      - symfony_network
+
+  memcached:
+    image: memcached:1.6
+    container_name: symfony_memcached
+    ports:
+      - "11211:11211"
+    restart: always
+
+volumes:
+  db_data: {}
+
+networks:
+  symfony_network:
+    driver: bridge

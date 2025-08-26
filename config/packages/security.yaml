@@ -1,0 +1,28 @@
+security:
+    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+    password_hashers:
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+    providers:
+        users_in_db:
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        login:
+            pattern: ^/api/login
+            stateless: true
+            provider: users_in_db
+            json_login:
+                check_path: /api/login
+                username_path: email
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure   
+        api:
+            pattern: ^/item
+            stateless: true
+            provider: users_in_db
+            jwt: ~
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
