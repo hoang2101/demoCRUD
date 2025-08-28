@@ -11,6 +11,11 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: symfony
+    command: [
+      "--innodb-buffer-pool-size=256M",
+      "--max-connections=100",
+      "--innodb-log-file-size=64M"
+    ]
     networks:
       - symfony_network
     restart: unless-stopped
