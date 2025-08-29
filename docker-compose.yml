@@ -14,13 +14,11 @@ services:
     command: [
       "--innodb-buffer-pool-size=64M",
       "--innodb-log-buffer-size=8M",
-      "--innodb-log-file-size=32M",
+      "--innodb-redo-log-capacity=64M",
       "--innodb-buffer-pool-instances=1",
       "--max-connections=20",
       "--table-open-cache=200",
       "--thread-cache-size=8",
-      "--query-cache-type=0",
-      "--query-cache-size=0",
       "--performance-schema=0",
       "--tmp-table-size=16M",
       "--max-heap-table-size=16M",
@@ -29,6 +27,7 @@ services:
       "--read-buffer-size=256K",
       "--read-rnd-buffer-size=512K"
     ]
+
     networks:
       - symfony_network
     restart: unless-stopped
