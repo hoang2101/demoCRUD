@@ -4,10 +4,10 @@ services:
       context: .
     container_name: symfony_app
     ports:
-      - "80:8000"
-    restart: unless-stopped
+      - "8000:8000"  # Port của ứng dụng Symfony
     volumes:
       - .:/app
-      - /app/vendor  # Duy trì mã nguồn trên container
     networks:
       - symfony_network
+    environment:
+        DATABASE_URL: mysql://root:root@db:3306/demo_database
