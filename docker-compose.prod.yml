@@ -11,3 +11,5 @@ services:
       - /app/vendor  # Duy trì mã nguồn trên container
     networks:
       - symfony_network
+    environment:
+        APP_ENV: prod
