@@ -5,3 +5,4 @@ controllers:
     type: attribute
 api_login:
     path: /login
+    methods: [POST]
