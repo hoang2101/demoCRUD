@@ -9,7 +9,5 @@ services:
     volumes:
       - .:/app
       - /app/vendor  # Duy trì mã nguồn trên container
-    environment:
-      - SYMFONY_ENV=dev
     networks:
       - symfony_network
