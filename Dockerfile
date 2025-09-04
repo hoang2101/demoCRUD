@@ -19,6 +19,9 @@ COPY . /app
 
 WORKDIR /app
 
+RUN php bin/console cache:clear
+RUN php bin/console cache:warmup
+
 # Cài đặt các gói PHP từ Composer
 RUN composer install --no-dev --optimize-autoloader
 
