@@ -10,5 +10,5 @@ services:
     networks:
       - symfony_network
     environment:
-        DATABASE_URL: mysql://root:root@db:3306/demo_database
+        MYSQL_HOST: db
         APP_ENV: dev
